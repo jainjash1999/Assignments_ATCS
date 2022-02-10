@@ -1,1 +1,184 @@
+git.txt
+Last week
+1 Feb
+
+You uploaded an item
+Text
+git.txt
+jainjash1999 MINGW64 ~
+$ cd E:
+
+jainjash1999 MINGW64 /e
+$ cd trainig
+bash: cd: trainig: No such file or directory
+
+jainjash1999 MINGW64 /e
+$ cd java
+
+jainjash1999 MINGW64 /e/java
+$ cd git
+
+jainjash1999 MINGW64 /e/java/git (book)
+$ mkdir assign
+
+jainjash1999 MINGW64 /e/java/git (book)
+$ git checkout -b master
+Switched to a new branch 'master'
+
+jainjash1999 MINGW64 /e/java/git (master)
+$ cd assign
+
+jainjash1999 MINGW64 /e/java/git/assign (master)
+$ git init
+Initialized empty Git repository in E:/java/git/assign/.git/
+
+jainjash1999 MINGW64 /e/java/git/assign (master)
+$ touch aaa.sh
+
+jainjash1999 MINGW64 /e/java/git/assign (master)
+$ rm aaa.sh
+
+jainjash1999 MINGW64 /e/java/git/assign (master)
+$ ls
+
+jainjash1999 MINGW64 /e/java/git/assign (master)
+$ aaa.txt
+bash: aaa.txt: command not found
+
+jainjash1999 MINGW64 /e/java/git/assign (master)
+$ touch aaa.txt
+
+jainjash1999 MINGW64 /e/java/git/assign (master)
+$ cat >> aaa.txt
+hello, busy in doing assignments
+
+
+jainjash1999 MINGW64 /e/java/git/assign (master)
+$ cat aaa.txt
+hello, busy in doing assignments
+
+jainjash1999 MINGW64 /e/java/git/assign (master)
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        aaa.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+jainjash1999 MINGW64 /e/java/git/assign (master)
+$ cat >> aaa.txt
+now doing 2nd ques
+
+
+jainjash1999 MINGW64 /e/java/git/assign (master)
+$ git commit -m "adding a line"
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        aaa.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+jainjash1999 MINGW64 /e/java/git/assign (master)
+$ git add -all
+error: did you mean `--all` (with two dashes)?
+
+jainjash1999 MINGW64 /e/java/git/assign (master)
+$ git add --all
+warning: LF will be replaced by CRLF in aaa.txt.
+The file will have its original line endings in your working directory
+
+jainjash1999 MINGW64 /e/java/git/assign (master)
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   aaa.txt
+
+
+jainjash1999 MINGW64 /e/java/git/assign (master)
+$ git status --short
+A  aaa.txt
+
+jainjash1999 MINGW64 /e/java/git/assign (master)
+$ cat aaa.txt
+hello, busy in doing assignments
+now doing 2nd ques
+
+jainjash1999 MINGW64 /e/java/git/assign (master)
+$ cat >> aaa.txt
+now good evening
+
+
+jainjash1999 MINGW64 /e/java/git/assign (master)
+$ git commit -a -m "adding more lines"
+warning: LF will be replaced by CRLF in aaa.txt.
+The file will have its original line endings in your working directory
+[master (root-commit) 8631b8e] adding more lines
+ 1 file changed, 3 insertions(+)
+ create mode 100644 aaa.txt
+
+jainjash1999 MINGW64 /e/java/git/assign (master)
+$ git log
+commit 8631b8ec6073f49474a2932c470ba5f766e264b8 (HEAD -> master)
+
+    adding more lines
+
+jainjash1999 MINGW64 /e/java/git/assign (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+jainjash1999 MINGW64 /e/java/git/assign (master)
+$ git checkout -b even
+Switched to a new branch 'even'
+
+jainjash1999 MINGW64 /e/java/git/assign (even)
+$ git branch weme
+
+jainjash1999 MINGW64 /e/java/git/assign (even)
+$ git branch
+* even
+  master
+  weme
+
+jainjash1999 MINGW64 /e/java/git/assign (even)
+$ git checkout weme
+Switched to branch 'weme'
+
+jainjash1999 MINGW64 /e/java/git/assign (weme)
+$ git checkout master
+Switched to branch 'master'
+
+jainjash1999 MINGW64 /e/java/git/assign (master)
+$ git merge weme
+Already up to date.
+
+jainjash1999 MINGW64 /e/java/git/assign (master)
+$ git checkout weme
+Switched to branch 'weme'
+
+jainjash1999 MINGW64 /e/java/git/assign (weme)
+$ git merge master
+Already up to date.
+
+jainjash1999 MINGW64 /e/java/git/assign (weme)
+$ git checkout master
+Switched to branch 'master'
+
+jainjash1999 MINGW64 /e/java/git/assign (master)
+$ git merge weme
+Already up to date.
+
+
 
