@@ -32,7 +32,31 @@ public int[] bubbleSort(int[] list){
 
 Q2. Merge Sort Algo
 Ans.
+void mergeSort(int *Arr, int start, int end) {
+
+	if(start < end) {
+		int mid = (start + end) / 2;
+		mergeSort(Arr, start, mid);
+		mergeSort(Arr, mid+1, end);
+		merge(Arr, start, mid, end);
+	}
+}
+
+
+
+
+
+
 
 Q3. Quick Sort Algo
 Ans.
+QUICKSORT (array A, start, end)     
+{  
+ 1 if (start < end)     
+ 2 {  
+3 p = partition(A, start, end)  
+4 QUICKSORT (A, start, p - 1)    
+5 QUICKSORT (A, p + 1, end)    
+6 }   
+}  
 
