@@ -1,1 +1,300 @@
+package prac;
+
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeMap;
+
+public class EntrySet {
+
+public static void main(String[] args) {
+		
+		TreeMap<Integer, String> tm = new TreeMap();
+		
+		tm.put(111, "ramesh");
+		tm.put(112, "ramesh1");
+		tm.put(113, "ramesh2");
+		tm.put(114, "ramesh3");
+		tm.put(111, "ramesh4");
+		tm.put(116, "ramesh");
+		
+		 Set<Entry<Integer, String>> result= tm.entrySet();
+		
+		Iterator itr = result.iterator();
+		
+		while(itr.hasNext()) {
+			System.out.println(itr.next());
+		}
+}
+}
+
+
+
+
+
+
+
+
+
+
+package prac;
+
+import java.util.Iterator;
+import java.util.Set;
+import java.util.TreeMap;
+
+public class KeySet {
+
+	public static void main(String[] args) {
+		
+		TreeMap<Integer, String> tm = new TreeMap();
+		
+		tm.put(111, "ramesh");
+		tm.put(112, "ramesh1");
+		tm.put(113, "ramesh2");
+		tm.put(114, "ramesh3");
+		tm.put(111, "ramesh4");
+		tm.put(116, "ramesh");
+		
+		System.out.println(tm);
+		
+		Set<Integer> keys = tm.keySet();
+		
+		Iterator itr = keys.iterator();
+		while(itr.hasNext()) {
+			System.out.println(itr.next());
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+package prac;
+
+import java.util.Iterator;
+import java.util.PriorityQueue;
+
+public class Prac3 {
+
+	public static void main(String[] args) {
+		PriorityQueue<String> pq = new PriorityQueue<String>();
+		
+	
+	pq.add("jash");
+	pq.add("jash1");
+	pq.add("jash2");
+	pq.add("jash");
+	
+	
+	
+	System.out.println("head : " + pq.element());
+	System.out.println(pq);
+	
+	Iterator itr = pq.iterator();
+	while(itr.hasNext()) {
+		System.out.println(itr.next());
+	}
+//	System.out.println(pq.remove());
+	
+	System.out.println(pq.poll());
+	itr = pq.iterator();
+	while(itr.hasNext()) {
+		System.out.println(itr.next());
+	}
+	}
+}
+
+
+
+
+
+
+package prac;
+
+import java.util.HashMap;
+
+
+public class Prac4 {
+
+	public static void main(String[] args) {
+		
+	
+	HashMap hs = new HashMap();
+
+	hs.put(100, "ram");
+	hs.put(101, "ram1");
+	hs.put(102, "ram2");
+	hs.put(103, "ram3");
+	hs.put(104, "ram");
+	
+	System.out.println(hs);
+	
+	
+	
+	
+	
+	
+	
+	
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+package prac;
+
+import java.util.HashMap;
+
+public class Prac5 {
+
+	public static void main(String[] args) {
+		
+		HashMap<Integer,String> hs = new HashMap();
+
+		hs.put(100, "ram");
+		hs.put(101, "ram1");
+		hs.put(100, "jj");
+		hs.put(102, "ram0");
+		hs.put(103, "ram2");
+		hs.put(104, "jj1");
+		
+		System.out.println(hs);
+		System.out.println(hs.isEmpty());
+		System.out.println(hs.containsKey(100));
+		System.out.println(hs.remove(100));
+		System.out.println(hs);
+		System.out.println(hs.size());
+		hs.clear();
+		System.out.println(hs.size());
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+package prac;
+
+import java.util.ArrayList;
+
+public class Practice1 {
+
+	public static void main(String[] args) {
+		
+		ArrayList al= new ArrayList();
+
+		al.add(123);
+
+		al.add(new Integer (34));
+
+		al.add(45.0f);
+
+		
+		al.add("mudit");
+
+		al.add(true);
+
+		al.add(null);
+
+		al.add('s');
+
+		al.add("ritika");
+
+		al.add("mudit");
+		
+		
+
+		System.out.println("all the values: "+al.remove(0)); 
+	}
+}
+
+
+
+
+
+
+package prac;
+
+import java.util.LinkedList;
+
+public class Practice2_ll {
+
+	public static void main(String[] args) {
+
+		LinkedList ll = new LinkedList();
+
+		ll.add(123);
+
+		ll.add(new Integer(34));
+
+		ll.add(45.0f);
+
+		ll.add("mudit");
+
+		ll.add(true);
+
+		ll.add(null);
+
+		ll.add('s');
+
+		ll.add("ritika");
+
+		ll.add("mudit");
+
+		System.out.println("list size: " + ll.size());// 5 17
+
+		System.out.println("contains amandeep: " + ll.contains("amandeep"));
+
+		System.out.println("get first elemnt: " + ll.getFirst());// 100
+
+		System.out.println("get last:" + ll.getLast());
+
+		System.out.println("remove " + ll.remove());
+		
+		System.out.println("0 th index " + ll.remove(0));
+
+		ll.add("amandeep");
+
+		System.out.println("size " + ll.size());
+
+		System.out.println("all the values: " + ll);
+
+		
+		LinkedList ll1 = new LinkedList();
+
+		ll1.add(123);
+		
+		System.out.println(ll.retainAll(ll1));
+
+	}
+}
+
+
+
+
+
 
