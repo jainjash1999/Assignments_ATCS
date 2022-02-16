@@ -1,1 +1,106 @@
+package files;
+
+import java.io.File;
+import java.io.IOException;
+
+public class Test {
+
+	public static void main(String[] args) throws IOException {
+		
+		File f = new File("welcome.txt");
+		
+		f.createNewFile();
+		
+File f1 = new File("wel.txt");
+		
+		f1.createNewFile();
+		
+		System.out.println("file is created");
+	}
+}
+
+
+
+
+
+
+
+
+
+package files;
+
+import java.io.*;
+public class BufferWriterEx {
+
+	public static void main(String[] args) throws IOException{
+		
+		FileWriter fw = new FileWriter("welcome.txt");
+		
+		BufferedWriter bw = new BufferedWriter(fw);
+		
+		bw.write("welcome");
+		bw.write("to");
+		bw.write("file");
+		bw.write("writing");
+		bw.write(15);
+		
+		
+		System.out.println("done");
+		
+	}
+}
+
+
+
+
+
+
+
+
+package files;
+
+import java.io.*;
+public class FileWriterEx {
+
+	public static void main(String[] args) throws IOException {
+		
+		FileWriter fw = new FileWriter("welcome.txt");
+		
+		fw.write("welcome");
+		fw.write("to");
+		fw.write("file");
+		fw.write("writing");
+		fw.write(15);
+		
+		
+		fw.close();
+		
+		System.out.println("done");
+	}
+}
+
+
+
+
+
+
+
+
+
+package files;
+import java.io.*;
+public class PrintWriterEx {
+
+	public static void main(String[] args) throws IOException{
+		
+		FileWriter fw = new FileWriter("wel.txt");
+		PrintWriter pw = new PrintWriter(fw);
+		
+		pw.println("welcome");
+		
+		System.out.println("pw done");
+		
+	}
+}
+
 
