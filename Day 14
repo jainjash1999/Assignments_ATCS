@@ -107,7 +107,58 @@ public class ExceptionEx1 {
 
 
 
+public class CreateThrowsException {
+    public void ownException(String str){
+        if(str == null)
+        throw new NumberFormatException("Our own NumberFormatException exception");
+        else{
+            System.out.println("String is:"+str);
+        }
+    }
+    public void ownException1(int number){
+        if(number < 10)
+        throw new ArithmeticException("Our own ArithmeticException exception!!");
+        else
+        {
+            System.out.println("The number is: "+number);
+        }
+    }
+    public static void main(String[] args) {
+        CreateThrowsException cex = new CreateThrowsException();
+        cex.ownException("juned");
+        cex.ownException1(5);
+    }
+}
 
+
+
+
+
+
+
+
+class MyExceptionn extends Exception{
+    private int marks;
+    public MyExceptionn(int marks){
+        this.marks = marks;
+    }
+    public String toString(){
+        return "You are failed!!! Try again!!!";
+    }
+
+}
+public class MarksException {
+    static void validate(int marks) throws MyExceptionn{
+        if(marks < 40)
+        throw new MyExceptionn(marks);
+        else
+        System.out.println("You are passed!!!");
+    }  
+    public static void main(String[] args) throws MyExceptionn {
+        MarksException.validate(23);
+        System.out.println("This code will executed");
+    } 
+}
 
 
 
