@@ -1,1 +1,224 @@
+++++++++++++++++++Employee.java+++++++++++++++++++++++
+
+package practiceCaseStudyEmp;
+
+public class Employee {
+
+	private String ename;
+	private String eemail;
+	private int esalary;
+	private int epincode;
+	private String eaddress;
+
+	public String getEname() {
+		return ename;
+	}
+
+	public void setEname(String ename) {
+		this.ename = ename;
+	}
+
+	public String getEemail() {
+		return eemail;
+	}
+
+	public void setEemail(String eemail) {
+		this.eemail = eemail;
+	}
+
+	public int getEsalary() {
+		return esalary;
+	}
+
+	public void setEsalary(int esalary) {
+		this.esalary = esalary;
+	}
+
+	public int getEpincode() {
+		return epincode;
+	}
+
+	public void setEpincode(int epincode) {
+		this.epincode = epincode;
+	}
+
+	public String getEaddress() {
+		return eaddress;
+	}
+
+	public void setEaddress(String eaddress) {
+		this.eaddress = eaddress;
+	}
+
+	public Employee() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Employee(String ename, String eemail, int esalary, int epincode, String eaddress) {
+		super();
+		this.ename = ename;
+		this.eemail = eemail;
+		this.esalary = esalary;
+		this.epincode = epincode;
+		this.eaddress = eaddress;
+	}
+
+	@Override
+	public String toString() {
+		return "Employee [ename=" + ename + ", eemail=" + eemail + ", esalary=" + esalary + ", epincode=" + epincode
+				+ ", eaddress=" + eaddress + "]";
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+++++++++++++++++++++Client.java+++++++++++++++++++++
+
+package practiceCaseStudyEmp;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Scanner;
+import java.util.Set;
+
+public class Client {
+
+	public static void main(String[] args) {
+
+		HashMap<Integer, Employee> employee = new HashMap<Integer, Employee>();
+
+		int eid = 1000;
+
+		while (true) {
+
+			System.out.println("Welcome to Employee Management Application");
+			System.out.println("1. Enter New Employee Details");
+			System.out.println("2. Update Employee Details");
+			System.out.println("3. Get Employee Details");
+			System.out.println("4. Get All Employee Details");
+			System.out.println("5. Delete Employee Details");
+			System.out.println("6. Exit Employee Management Application");
+
+			Scanner sc = new Scanner(System.in);
+			int option = sc.nextInt();
+
+			switch (option) {
+			case 1:
+				System.out.println("Enter Employee Name: ");
+				String ename = sc.next();
+
+				System.out.println("Enter Employee Email: ");
+				String eemail = sc.next();
+
+				System.out.println("Enter Employee Salary: ");
+				int esalary = sc.nextInt();
+
+				System.out.println("Enter Employee Pincode: ");
+				int epincode = sc.nextInt();
+
+				System.out.println("Enter Employee Address: ");
+				String eaddress = sc.next();
+
+				Employee emp = new Employee(ename, eemail, esalary, epincode, eaddress);
+				employee.put(++eid, emp);
+
+				System.out.println("Employee Details Added Successfully with eid: " + eid);
+
+				System.out.println();
+
+				break;
+			case 2:
+
+				System.out.println("Enter eid whose details need to be updated: ");
+				int eidu = sc.nextInt();
+
+				System.out.println("Enter Employee Name: ");
+				String enameu = sc.next();
+
+				System.out.println("Enter Employee Email: ");
+				String eemailu = sc.next();
+
+				System.out.println("Enter Employee Salary: ");
+				int esalaryu = sc.nextInt();
+
+				System.out.println("Enter Employee Pincode: ");
+				int epincodeu = sc.nextInt();
+
+				System.out.println("Enter Employee Address: ");
+				String eaddressu = sc.next();
+
+				Employee emp1 = new Employee(enameu, eemailu, esalaryu, epincodeu, eaddressu);
+				employee.put(eidu, emp1);
+
+				System.out.println("Details of " + eidu + " added successfully");
+
+				System.out.println();
+
+				break;
+			case 3:
+
+				System.out.println("Enter eid to get details of the Employee: ");
+				int eidg = sc.nextInt();
+
+				Employee empg = employee.get(eidg);
+				System.out.println(empg);
+
+				System.out.println();
+
+				break;
+			case 4:
+
+				Set<Entry<Integer, Employee>> empdetails = employee.entrySet();
+				Iterator<Entry<Integer, Employee>> itr = empdetails.iterator();
+
+				while (itr.hasNext()) {
+					Entry<Integer, Employee> finalempdetails = itr.next();
+
+					System.out.println(finalempdetails.getKey() + " " + finalempdetails.getValue());
+				}
+				System.out.println();
+
+				break;
+			case 5:
+
+				System.out.println("Enter eid to delete details of the Employee: ");
+				int eidd = sc.nextInt();
+
+				Employee empd = employee.remove(eidd);
+				System.out.println(eidd + " eid removed successfully !!");
+				System.out.println();
+
+				break;
+			case 6:
+
+				break;
+			default:
+
+				break;
+
+			}
+
+		}
+
+	}
+}
+
+
+
 
