@@ -1,1 +1,151 @@
+package thread;
+
+class MyThread extends Thread {
+
+	public void run() {
+		for (int i = 0; i < 10; i++) {
+			System.out.println("child thread");
+		}
+	}
+}
+
+public class ThreadDemo {
+
+	public static void main(String[] args) {
+
+		MyThread mt = new MyThread();
+
+		mt.run();
+		mt.start();
+
+		System.out.println("main thread");
+
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+package thread;
+
+class MyRunnable implements Runnable {
+
+	@Override
+	public void run() {
+		for (int i = 0; i < 3; i++) {
+
+			System.out.println("child thread");
+		}
+	}
+}
+
+public class RuDemo {
+
+	public static void main(String[] args) {
+		MyRunnable mr = new MyRunnable();
+		Thread t = new Thread(mr);
+		t.start();
+
+		for (int i = 0; i < 3; i++) {
+			System.out.println("main thread");
+		}
+
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+package thread;
+
+class MyThread extends Thread {
+
+	public void run() {
+		System.out.println(Thread.currentThread().getName());
+
+	}
+}
+
+public class ThreadDemo {
+
+	public static void main(String[] args) {
+
+		MyThread mt = new MyThread();
+
+		mt.start();
+		Thread.currentThread().setName("jj");
+
+		System.out.println(Thread.currentThread().getName());
+
+	}
+}
+
+
+
+
+
+
+
+package thread;
+
+class MyThread extends Thread {
+
+	public void run() {
+		System.out.println(Thread.currentThread().getPriority());
+
+	}
+}
+
+public class ThreadDemo {
+
+	public static void main(String[] args) {
+
+		MyThread mt = new MyThread();
+
+		mt.start();
+		
+
+		System.out.println(Thread.currentThread().getPriority());
+
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
