@@ -1,1 +1,195 @@
+package Day16;
+
+public class Predicate {
+	public static void main(String args[]) {
+		Predicate<Integer> p1 = i -> i % 2 == 0;
+
+		System.out.println(p1.test(45));
+
+		Predicate<String> p2 = a -> a.length() > 5;
+		System.out.println(p2.test("Jash Jain"));
+		System.out.println(p2.test("Jash "));
+		System.out.println(p2.test("Jain"));
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+package Day16;
+
+import java.util.function.Function;
+
+interface addable {
+	void add(int a, int b);
+}
+
+public class Add {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		addable ad1 = (a, b) -> System.out.print(a + b);
+		ad1.add(3, 8);
+
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+package Day16;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+class eg {
+	int eno;
+	String ename;
+
+	public eg(int eno, String ename) {
+		this.eno = eno;
+		this.ename = ename;
+	}
+
+	public String toString() {
+		return eno + "" + ename;
+	}
+
+}
+
+public class Employee {
+	public static void main(String[] args) {
+
+		ArrayList<eg> ar = new ArrayList<eg>();
+
+		ar.add(new eg(123, "mohit"));
+		ar.add(new eg(124, "ajay"));
+		ar.add(new eg(125, "mayank"));
+		ar.add(new eg(126, "anmol"));
+
+		System.out.println(ar);
+
+		Collections.sort(ar, (e1, e2) -> (e1.eno > e2.eno) ? 1 : (e1.eno > e2.eno) ? -1 : 0);
+
+		System.out.println(ar);
+
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+package Day16;
+
+import java.util.*;
+import java.util.function.Predicate;
+
+class Emp {
+
+	String ename;
+	int salary;
+
+	public Emp() {
+
+	}
+
+	public Emp(String ename, int salary) {
+		this.salary = salary;
+		this.ename = ename;
+	}
+
+	public String toString() {
+		return ename + "" + salary;
+	}
+
+}
+
+public class EmpSal {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ArrayList<Emp> ar = new ArrayList<Emp>();
+		ar.add(new Emp("jash", 110000));
+		ar.add(new Emp("aj", 6000));
+		ar.add(new Emp("manan", 7000));
+		ar.add(new Emp("anmol", 5000));
+		for (Emp e : ar) {
+			Predicate<Emp> p2 = a -> e.salary > 7000;
+
+			System.out.println(p2.test(e));
+		}
+	}
+
+}
+
+
+
+
+
+
+
+
+package Day16;
+
+public class Lambda {
+
+	public static void main(String[] args) {
+	
+  Runnable r = () -> System.out.println("Hello");
+		new Thread(r).start();
+		// r.run();
+	}
+
+}
+
+
+
+
+
+
+
+
+package Day16;
+
+import java.util.function.Function;
+
+public class SqRoot {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Function<Integer, Integer> f = i -> i * i;
+		System.out.print(f.apply(5));
+	}
+
+}
+
+
 
