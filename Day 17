@@ -72,3 +72,206 @@ assignments=# \dt
  public | emp      | table | postgres
  public | salgrade | table | postgres
 (5 rows)
+
+
+
+
+
+assignments=# insert into DEPT (DEPTNO, DNAME, LOC)
+assignments-#   select 10, 'ACCOUNTING', 'NEW YORK' from dummy union all
+assignments-#   select 20, 'RESEARCH',   'DALLAS'   from dummy union all
+assignments-#   select 30, 'SALES',      'CHICAGO'  from dummy union all
+assignments-#   select 40, 'OPERATIONS', 'BOSTON'   from dummy;
+INSERT 0 4
+assignments=# insert into emp (EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO)
+assignments-#   select 7839, 'KING',   'PRESIDENT', cast(null as integer), to_date('17-11-1981','dd-mm-yyyy'),    5000, cast(null as integer), 10 from dummy union all
+assignments-#   select 7698, 'BLAKE',  'MANAGER',   7839, to_date('1-5-1981','dd-mm-yyyy'),      2850, cast(null as integer), 30 from dummy union all
+assignments-#   select 7782, 'CLARK',  'MANAGER',   7839, to_date('9-6-1981','dd-mm-yyyy'),      2450, cast(null as integer), 10 from dummy union all
+assignments-#   select 7566, 'JONES',  'MANAGER',   7839, to_date('2-4-1981','dd-mm-yyyy'),      2975, cast(null as integer), 20 from dummy union all
+assignments-#   select 7788, 'SCOTT',  'ANALYST',   7566, to_date('13-7-87','dd-mm-rr') - 85,  3000, cast(null as integer), 20 from dummy union all
+assignments-#   select 7902, 'FORD',   'ANALYST',   7566, to_date('3-12-1981','dd-mm-yyyy'),     3000, cast(null as integer), 20 from dummy union all
+assignments-#   select 7369, 'SMITH',  'CLERK',     7902, to_date('17-12-1980','dd-mm-yyyy'),     800, cast(null as integer), 20 from dummy union all
+assignments-#   select 7499, 'ALLEN',  'SALESMAN',  7698, to_date('20-2-1981','dd-mm-yyyy'),     1600,  300, 30 from dummy union all
+assignments-#   select 7521, 'WARD',   'SALESMAN',  7698, to_date('22-2-1981','dd-mm-yyyy'),     1250,  500, 30 from dummy union all
+assignments-#   select 7654, 'MARTIN', 'SALESMAN',  7698, to_date('28-9-1981','dd-mm-yyyy'),     1250, 1400, 30 from dummy union all
+assignments-#   select 7844, 'TURNER', 'SALESMAN',  7698, to_date('8-9-1981','dd-mm-yyyy'),      1500,    0, 30 from dummy union all
+assignments-#   select 7876, 'ADAMS',  'CLERK',     7788, to_date('13-7-87', 'dd-mm-rr') - 51, 1100, cast(null as integer), 20 from dummy union all
+assignments-#   select 7900, 'JAMES',  'CLERK',     7698, to_date('3-12-1981','dd-mm-yyyy'),      950, cast(null as integer), 30 from dummy union all
+assignments-#   select 7934, 'MILLER', 'CLERK',     7782, to_date('23-1-1982','dd-mm-yyyy'),     1300, cast(null as integer), 10 from dummy;
+INSERT 0 14
+assignments=# insert into salgrade
+assignments-#   select 1,  700, 1200 from dummy union all
+assignments-#   select 2, 1201, 1400 from dummy union all
+assignments-#   select 3, 1401, 2000 from dummy union all
+assignments-#   select 4, 2001, 3000 from dummy union all
+assignments-#   select 5, 3001, 9999 from dummy;
+INSERT 0 5
+assignments=# \d
+              List of relations
+ Schema |     Name      |   Type   |  Owner
+--------+---------------+----------+----------
+ public | bonus         | table    | postgres
+ public | dept          | table    | postgres
+ public | dummy         | table    | postgres
+ public | emp           | table    | postgres
+ public | person        | table    | postgres
+ public | person_id_seq | sequence | postgres
+ public | salgrade      | table    | postgres
+(7 rows)
+
+
+assignments=# \d emp
+                        Table "public.emp"
+  Column  |         Type          | Collation | Nullable | Default
+----------+-----------------------+-----------+----------+---------
+ empno    | numeric(4,0)          |           | not null |
+ ename    | character varying(10) |           |          |
+ job      | character varying(9)  |           |          |
+ mgr      | numeric(4,0)          |           |          |
+ hiredate | date                  |           |          |
+ sal      | numeric(7,2)          |           |          |
+ comm     | numeric(7,2)          |           |          |
+ deptno   | numeric(2,0)          |           | not null |
+
+
+assignments=# \d dept
+                       Table "public.dept"
+ Column |         Type          | Collation | Nullable | Default
+--------+-----------------------+-----------+----------+---------
+ deptno | numeric(2,0)          |           | not null |
+ dname  | character varying(14) |           |          |
+ loc    | character varying(13) |           |          |
+
+
+assignments=# \d dummy
+               Table "public.dummy"
+ Column |  Type   | Collation | Nullable | Default
+--------+---------+-----------+----------+---------
+ dummy  | numeric |           |          |
+
+
+assignments=# \d bonus
+                      Table "public.bonus"
+ Column |         Type          | Collation | Nullable | Default
+--------+-----------------------+-----------+----------+---------
+ ename  | character varying(10) |           |          |
+ job    | character varying(9)  |           |          |
+ sal    | numeric               |           |          |
+ comm   | numeric               |           |          |
+
+
+assignments=# \d salgrade
+              Table "public.salgrade"
+ Column |  Type   | Collation | Nullable | Default
+--------+---------+-----------+----------+---------
+ grade  | numeric |           |          |
+ losal  | numeric |           |          |
+ hisal  | numeric |           |          |
+
+
+assignments=# DROP TABLE person;
+DROP TABLE
+assignments=# \dt
+          List of relations
+ Schema |   Name   | Type  |  Owner
+--------+----------+-------+----------
+ public | bonus    | table | postgres
+ public | dept     | table | postgres
+ public | dummy    | table | postgres
+ public | emp      | table | postgres
+ public | salgrade | table | postgres
+(5 rows)
+
+
+assignments=# SELECT * FROM emp;
+ empno | ename  |    job    | mgr  |   hiredate    |   sal   |  comm   | deptno
+-------+--------+-----------+------+---------------+---------+---------+--------
+  7839 | KING   | PRESIDENT |      | 1981-11-17    | 5000.00 |         |     10
+  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01    | 2850.00 |         |     30
+  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09    | 2450.00 |         |     10
+  7566 | JONES  | MANAGER   | 7839 | 1981-04-02    | 2975.00 |         |     20
+  7788 | SCOTT  | ANALYST   | 7566 | 0001-04-19 BC | 3000.00 |         |     20
+  7902 | FORD   | ANALYST   | 7566 | 1981-12-03    | 3000.00 |         |     20
+  7369 | SMITH  | CLERK     | 7902 | 1980-12-17    |  800.00 |         |     20
+  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20    | 1600.00 |  300.00 |     30
+  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22    | 1250.00 |  500.00 |     30
+  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28    | 1250.00 | 1400.00 |     30
+  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08    | 1500.00 |    0.00 |     30
+  7876 | ADAMS  | CLERK     | 7788 | 0001-05-23 BC | 1100.00 |         |     20
+  7900 | JAMES  | CLERK     | 7698 | 1981-12-03    |  950.00 |         |     30
+  7934 | MILLER | CLERK     | 7782 | 1982-01-23    | 1300.00 |         |     10
+(14 rows)
+
+
+assignments=# SELECT * FROM dept;
+ deptno |   dname    |   loc
+--------+------------+----------
+     10 | ACCOUNTING | NEW YORK
+     20 | RESEARCH   | DALLAS
+     30 | SALES      | CHICAGO
+     40 | OPERATIONS | BOSTON
+(4 rows)
+
+
+assignments=# SELECT * FROM bonus;
+ ename | job | sal | comm
+-------+-----+-----+------
+(0 rows)
+
+
+assignments=# SELECT * FROM salgrade;
+ grade | losal | hisal
+-------+-------+-------
+     1 |   700 |  1200
+     2 |  1201 |  1400
+     3 |  1401 |  2000
+     4 |  2001 |  3000
+     5 |  3001 |  9999
+(5 rows)
+
+
+assignments=# SELECT * FROM dummy;
+ dummy
+-------
+     0
+(1 row)
+
+
+assignments=# SELECT * FROM emp JOIN dept ON emp.deptno = dept.deptno;
+ empno | ename  |    job    | mgr  |   hiredate    |   sal   |  comm   | deptno | deptno |   dname    |   loc
+-------+--------+-----------+------+---------------+---------+---------+--------+--------+------------+----------
+  7934 | MILLER | CLERK     | 7782 | 1982-01-23    | 1300.00 |         |     10 |     10 | ACCOUNTING | NEW YORK
+  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09    | 2450.00 |         |     10 |     10 | ACCOUNTING | NEW YORK
+  7839 | KING   | PRESIDENT |      | 1981-11-17    | 5000.00 |         |     10 |     10 | ACCOUNTING | NEW YORK
+  7876 | ADAMS  | CLERK     | 7788 | 0001-05-23 BC | 1100.00 |         |     20 |     20 | RESEARCH   | DALLAS
+  7369 | SMITH  | CLERK     | 7902 | 1980-12-17    |  800.00 |         |     20 |     20 | RESEARCH   | DALLAS
+  7902 | FORD   | ANALYST   | 7566 | 1981-12-03    | 3000.00 |         |     20 |     20 | RESEARCH   | DALLAS
+  7788 | SCOTT  | ANALYST   | 7566 | 0001-04-19 BC | 3000.00 |         |     20 |     20 | RESEARCH   | DALLAS
+  7566 | JONES  | MANAGER   | 7839 | 1981-04-02    | 2975.00 |         |     20 |     20 | RESEARCH   | DALLAS
+  7900 | JAMES  | CLERK     | 7698 | 1981-12-03    |  950.00 |         |     30 |     30 | SALES      | CHICAGO
+  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08    | 1500.00 |    0.00 |     30 |     30 | SALES      | CHICAGO
+  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28    | 1250.00 | 1400.00 |     30 |     30 | SALES      | CHICAGO
+  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22    | 1250.00 |  500.00 |     30 |     30 | SALES      | CHICAGO
+  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20    | 1600.00 |  300.00 |     30 |     30 | SALES      | CHICAGO
+  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01    | 2850.00 |         |     30 |     30 | SALES      | CHICAGO
+(14 rows)
+
+
+assignments=# SELECT * FROM dept JOIN emp ON dept.deptno = emp.deptno;
+ deptno |   dname    |   loc    | empno | ename  |    job    | mgr  |   hiredate    |   sal   |  comm   | deptno
+--------+------------+----------+-------+--------+-----------+------+---------------+---------+---------+--------
+     10 | ACCOUNTING | NEW YORK |  7934 | MILLER | CLERK     | 7782 | 1982-01-23    | 1300.00 |         |     10
+     10 | ACCOUNTING | NEW YORK |  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09    | 2450.00 |         |     10
+     10 | ACCOUNTING | NEW YORK |  7839 | KING   | PRESIDENT |      | 1981-11-17    | 5000.00 |         |     10
+     20 | RESEARCH   | DALLAS   |  7876 | ADAMS  | CLERK     | 7788 | 0001-05-23 BC | 1100.00 |         |     20
+     20 | RESEARCH   | DALLAS   |  7369 | SMITH  | CLERK     | 7902 | 1980-12-17    |  800.00 |         |     20
+     20 | RESEARCH   | DALLAS   |  7902 | FORD   | ANALYST   | 7566 | 1981-12-03    | 3000.00 |         |     20
+     20 | RESEARCH   | DALLAS   |  7788 | SCOTT  | ANALYST   | 7566 | 0001-04-19 BC | 3000.00 |         |     20
+     20 | RESEARCH   | DALLAS   |  7566 | JONES  | MANAGER   | 7839 | 1981-04-02    | 2975.00 |         |     20
+     30 | SALES      | CHICAGO  |  7900 | JAMES  | CLERK     | 7698 | 1981-12-03    |  950.00 |         |     30
+     30 | SALES      | CHICAGO  |  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08    | 1500.00 |    0.00 |     30
+     30 | SALES      | CHICAGO  |  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28    | 1250.00 | 1400.00 |     30
+     30 | SALES      | CHICAGO  |  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22    | 1250.00 |  500.00 |     30
+     30 | SALES      | CHICAGO  |  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20    | 1600.00 |  300.00 |     30
+     30 | SALES      | CHICAGO  |  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01    | 2850.00 |         |     30
+(14 rows)
