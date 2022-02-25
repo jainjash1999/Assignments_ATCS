@@ -88,6 +88,154 @@ public interface EmployeeService {
 
 
 
-+++++++++++++++++++++++++++++++++++++++++++++++Employee Service+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++Employee.java+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+package com.entity;
+
+public class Employee {
+
+	private String empName;
+	private int empSal;
+	private String empAdd;
+	private String empEmail;
+
+	public String getEmpName() {
+		return empName;
+	}
+
+	public void setEmpName(String empName) {
+		this.empName = empName;
+	}
+
+	public int getEmpSal() {
+		return empSal;
+	}
+
+	public void setEmpSal(int empSal) {
+		this.empSal = empSal;
+	}
+
+	public String getEmpAdd() {
+		return empAdd;
+	}
+
+	public void setEmpAdd(String empAdd) {
+		this.empAdd = empAdd;
+	}
+
+	public String getEmpEmail() {
+		return empEmail;
+	}
+
+	public void setEmpEmail(String empEmail) {
+		this.empEmail = empEmail;
+	}
+
+	public Employee() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Employee(String empName, int empSal, String empAdd, String empEmail) {
+		super();
+		this.empName = empName;
+		this.empSal = empSal;
+		this.empAdd = empAdd;
+		this.empEmail = empEmail;
+	}
+
+	@Override
+	public String toString() {
+		return "Employee [empName=" + empName + ", empSal=" + empSal + ", empAdd=" + empAdd + ", empEmail=" + empEmail
+				+ "]";
+	}
+
+}
+
+
+
+
+
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++Employee Dao Impl+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+package com.dao;
+
+import java.util.HashMap;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.entity.Employee;
+
+public class EmployeeDaoImpl implements EmployeeDao{
+
+	int empId = 100;
+	HashMap<Integer, Employee> employee = new HashMap<Integer, Employee>();    
+	
+	
+	@Override
+	public int addEmployee(Employee emp) {
+		employee.put(++empId, emp);
+		
+		return empId;
+	}
+
+	@Override
+	public Employee updateEmployee(int empId, Employee emp) {
+		employee.put(empId, emp);
+		return employee.get(empId);
+	}
+
+	@Override
+	public void deleteEmployee(int empId) {
+		employee.remove(empId);
+		
+		
+	}
+
+	@Override
+	public Employee getEmployee(int empId) {
+		
+		return employee.get(empId);
+	}
+
+	@Override
+	public Set<Entry<Integer, Employee>> getAllEmployees() {
+		
+		Set<Entry<Integer, Employee>> result = employee.entrySet();
+		return result;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++Employee Dao.java+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+package com.dao;
+
+import java.util.Set;
+import java.util.Map.Entry;
+
+import com.entity.Employee;
+
+public interface EmployeeDao {
+
+	int addEmployee(Employee emp);
+	Employee updateEmployee(int empId, Employee emp);
+	void deleteEmployee(int empId);
+	Employee getEmployee(int empId);
+	Set<Entry<Integer, Employee>> getAllEmployees();
+	
+}
+
+
+
 
 
