@@ -1,0 +1,93 @@
++++++++++++++++++++++++++++++++++++++++++++++++Employee Service Implementation+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+package com.service;
+
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.dao.EmployeeDao;
+import com.dao.EmployeeDaoImpl;
+import com.entity.Employee;
+
+public class EmployeeServiceImpl implements EmployeeService{
+
+	EmployeeDao dao = new EmployeeDaoImpl();
+	@Override
+	public int addEmployee(Employee emp) {
+		
+		return dao.addEmployee(emp);
+	}
+
+	@Override
+	public Employee updateEmployee(int empId, Employee emp) {
+		// TODO Auto-generated method stub
+		return dao.updateEmployee(empId, emp);
+	}
+
+	@Override
+	public void deleteEmployee(int empId) {
+		// TODO Auto-generated method stub
+		dao.deleteEmployee(empId);
+	}
+
+	@Override
+	public Employee getEmployee(int empId) {
+		// TODO Auto-generated method stub
+		return dao.getEmployee(empId);
+	}
+
+	@Override
+	public Set<Entry<Integer, Employee>> getAllEmployees() {
+		// TODO Auto-generated method stub
+		return dao.getAllEmployees();
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++Employee Service+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+package com.service;
+
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.entity.Employee;
+
+public interface EmployeeService {
+
+	
+	
+	int addEmployee(Employee emp);
+	Employee updateEmployee(int empId, Employee emp);
+	void deleteEmployee(int empId);
+	Employee getEmployee(int empId);
+	Set<Entry<Integer, Employee>> getAllEmployees();
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++Employee Service+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
