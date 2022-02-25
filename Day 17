@@ -1,1 +1,74 @@
+assignments=# create table dept(   deptno   decimal(2,0) not null,   dname varchar(14),   loc      varchar(13));
+CREATE TABLE
+assignments=# \dt
+        List of relations
+ Schema | Name | Type  |  Owner
+--------+------+-------+----------
+ public | dept | table | postgres
+(1 row)
 
+
+assignments=# create table emp(
+assignments(#    empno    decimal(4,0) not null,
+assignments(#   ename    varchar(10),
+assignments(#    job      varchar(9),
+assignments(#    mgr      decimal(4,0),
+assignments(#    hiredate date,
+assignments(#    sal      decimal(7,2),
+assignments(#    comm     decimal(7,2),
+assignments(#    deptno   decimal(2,0) not null);
+CREATE TABLE
+assignments=# \dt
+        List of relations
+ Schema | Name | Type  |  Owner
+--------+------+-------+----------
+ public | dept | table | postgres
+ public | emp  | table | postgres
+(2 rows)
+
+
+assignments=# create table bonus(
+assignments(#   ename    varchar(10),
+assignments(# job      varchar(9),
+assignments(# sal      decimal,
+assignments(# comm     decimal);
+CREATE TABLE
+assignments=# \dt
+         List of relations
+ Schema | Name  | Type  |  Owner
+--------+-------+-------+----------
+ public | bonus | table | postgres
+ public | dept  | table | postgres
+ public | emp   | table | postgres
+(3 rows)
+
+
+assignments=# create table salgrade(
+assignments(# grade    decimal,
+assignments(# losal    decimal,
+assignments(# hisal    decimal);
+CREATE TABLE
+assignments=# \dt
+          List of relations
+ Schema |   Name   | Type  |  Owner
+--------+----------+-------+----------
+ public | bonus    | table | postgres
+ public | dept     | table | postgres
+ public | emp      | table | postgres
+ public | salgrade | table | postgres
+(4 rows)
+
+
+assignments=# create table dummy (
+assignments(#    dummy    decimal);
+CREATE TABLE
+assignments=# \dt
+          List of relations
+ Schema |   Name   | Type  |  Owner
+--------+----------+-------+----------
+ public | bonus    | table | postgres
+ public | dept     | table | postgres
+ public | dummy    | table | postgres
+ public | emp      | table | postgres
+ public | salgrade | table | postgres
+(5 rows)
