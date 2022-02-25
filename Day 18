@@ -1,1 +1,178 @@
+++++++++++++++++++++++++++++Creating Table+++++++++++++++++++++++++++++++++++++++
+package jdbcEx;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class CreateTable {
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+
+		Class.forName("org.postgresql.Driver"); // 1.loading the driver class
+
+		Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost/jash1", "postgres", "1212"); // 2.create
+																												// the
+																												// connection
+
+		Statement stmt = conn.createStatement(); // 3. create statement
+
+		// DDL=>execute(); //DML=>executeUpdate(); //DRL--->executeQuery();
+
+		// create table
+		boolean result = stmt.execute("create table iaemp(eid int,ename varchar(10))"); // 4.execute query
+
+		conn.close(); // 5.close the connection
+
+		System.out.println("Table Created Successfully ");
+
+	}
+}
+
+
+
+
+
+
+
+
+++++++++++++++++++++++++++++Inserting Values+++++++++++++++++++++++++++++++++++++++
+package jdbcEx;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class InsertData {
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+
+		Class.forName("org.postgresql.Driver");// 1.loading the driver class
+
+		Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost/jash1", "postgres", "1212");// 2.create
+																												// the
+																												// connection
+
+		Statement stmt = conn.createStatement();// 3. create statement
+
+		// 4.execute query
+
+		// DDL=>execute(); //DML=>executeUpdate(); //DRL--->executeQuery();
+
+		int result = stmt.executeUpdate("insert into iaemp values(101,'jash')");// insert record
+
+		conn.close();// 5.close the connection
+
+		System.out.println("Values Inserted Successfully  ");
+
+	}
+}
+
+
+
+
+
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++Updating Values++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+package jdbcEx;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class UpdateData {
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+
+		Class.forName("org.postgresql.Driver");// 1.loading the driver class
+
+		Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost/jash1", "postgres", "1212");// 2.create
+																												// the
+																												// connection
+
+		Statement stmt = conn.createStatement();// 3. create statement
+
+		// 4.execute query
+
+		// DDL=>execute(); //DML=>executeUpdate(); //DRL--->executeQuery();
+
+		// update the record
+		int result = stmt.executeUpdate("update iaemp set ename='jash jain' where eid=101");
+
+		conn.close();// 5.close the connection
+
+		System.out.println("Values updated successfully  ");
+
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+++++++++++++++++++++++++++++++++++++++++Fetching Values+++++++++++++++++++++++++++++++++++++++++++++
+package jdbcEx;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class FetchData {
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+
+		Class.forName("org.postgresql.Driver");// 1.loading the driver class
+
+		Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost/jash1", "postgres", "1212");// 2.create
+																												// the
+																												// connection
+
+		Statement stmt = conn.createStatement();// 3. create statement
+
+		// 4.execute query
+
+		// DDL=>execute(); //DML=>executeUpdate(); //DRL--->executeQuery();
+
+		ResultSet result = stmt.executeQuery("select * from iaemp");// fetch the records
+
+		while (result.next()) {
+			System.out.println(result.getInt(1) + "  " + result.getString(2));
+		}
+
+		conn.close();// 5.close the connection
+
+		System.out.println("Values Fetched Successfully!!  ");
+
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
